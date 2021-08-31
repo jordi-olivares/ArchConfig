@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+import subprocess
+import re
+s=subprocess.check_output("nmcli device wifi list",shell=True).decode()
+ls=s.splitlines()
+aux=list()
+for l in ls:
+    if l.startswith('IN-USE'): continue
+    if l.startswith('*'):
+        lst=l.split()
+        #print(lst)
+        for p in range(len(lst)):
+            if p==0 or p==2 or p==8:
+                aux.append(lst[p])
+        continue
+    lst=l.split()
+    for p in range(len(lst)):
+        if p==1 or p==7: aux.append(lst[p])
+#print(aux) 
+r=''
+for w in aux:
+    if re.search('^[a-zA-Z1-9*]',w):
+        r=r+w+' '
+        continue
+    r=r+w+'\n'
+print(r)

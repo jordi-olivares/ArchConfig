@@ -1,0 +1,58 @@
+/*Theme Nord by Jordi Olivares*/
+
+
+*{
+    background: #2E3440;
+    foreground: #D8DEE9;
+    black:      #3B4252;
+    red:        #BF616A;
+    green:      #A3BE8C;
+    blue:       #81A1C1;
+    white:      #BFD5DE;
+    font: "UbuntuMono Nerd Font 14";
+    lines:  8;
+    background-color:   transparent;
+ }
+
+ #window{
+    border: 0;
+    border-radius:  4px;
+    padding:    0;
+    background-color:   @background;
+}
+
+#element{
+    border: 0;
+    border-radius:  4px;
+    padding: 3px;
+    font: "UbuntuMono Nerd Font 12";
+    text-color: @white;
+}
+
+#listview{
+    border: 0;
+    background-color:   @bakground;
+    columns:    1;
+}
+
+#element selected{
+    background-color: @blue;
+    text-color: @black;
+    border-radius:  4px;
+}
+
+#element alternate{
+    background-color:   @black;
+}
+
+inputbar{
+    text-color: @white;
+}
+
+prompt{
+    text-color: @white;
+}
+
+entry{
+    text-color: @green;
+}

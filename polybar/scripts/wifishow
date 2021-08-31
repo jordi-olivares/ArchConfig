@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+
+rofi_command="rofi -theme $HOME/.config/polybar/scripts/themes/wifishow.rasi"
+
+#uptime=$(uptime -p | sed -e 's/up //g')
+
+# Variable passed to rofi
+options="$(./internet)"
+
+chosen="$(echo -e "$options" | $rofi_command -p "WIFI" -dmenu -selected-row 0)"
+#case $chosen in
+#    $shutdown)
+#        poweroff
+#        ;;
+#    $reboot)
+#        reboot
+#        ;;
+#    $logout)
+#        pkill -KILL -u jordi
+#        ;;
+#esac
+

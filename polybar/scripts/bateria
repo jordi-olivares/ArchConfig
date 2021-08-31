@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+import subprocess
+import re
+s=subprocess.check_output("acpi",shell=True).decode()
+ls=s.split(',')
+print(ls[1])
