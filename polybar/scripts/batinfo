@@ -15,7 +15,7 @@ rofi_command="rofi -theme $HOME/.config/polybar/scripts/themes/batinfo.rasi"
 # Variable passed to rofi
 #options="$logout\n$reboot\n$shutdown"
 options=$(acpi | cut -d ',' -f2)
-chosen="$(echo -e "$options" | $rofi_command -p "Bateria" -dmenu -selected-row 0)"
+chosen="$(echo -e "$options" | $rofi_command -p "$options" -dmenu -selected-row 0)"
 #case $chosen in
 #    $shutdown)
 #        poweroff
