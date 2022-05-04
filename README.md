@@ -508,6 +508,43 @@ set show_hidden true
 -----------------------------
 
 
+*******En ubuntu
+Para instalar ranger en ubuntu se puede hacer desde los repositorios oficiales
+~$ sudo apt install ranger
+Esto instala ranger pero no crea los archivos de configruarción para ello
+se puede colocar el seguiente comando:
+~$ranger --copy-option=all
+Esto copia los archivos de configuración a la arpeta ~/.config/ranger/
+los importantes son:
+-rc.conf
+Si no funciona este comando también se pueden copiar los repositorios manualmente
+de 
+/usr/share/doc/ranger/
+Comunmente vienen comprimidos con terminación .gz pero se pueden descomprimir
+con 
+~$gzip -d documento
+
+Posteriormente se debe instalar una fuente pached y agrgarla como fuente de la consola
+Para ello se debe ir a la siguiente página:
+https://github.com/ryanoasis/nerd-fonts
+Y a la carpeta de patched-fonts, después se selecciona la fuente de interes
+por ejemplo DaddyTime, y se abre su carpeta, después la carpeta "complete" y se
+selecciona el archivo con extensión ttf que se desea instalar. por ejemplo:
+DaddyTimeMono Nerd Font, se da doble click y ya por último se selecciona dowload.
+Ya descargada la fuente pached, se debe copiar el archivo a la carpeta donde estan
+las fuentes:
+~$ sudo cp ~/Descargas/'DaddyTimeMono Nerd Font.ttf' /usr/local/share/fonts/
+
+Si se está utilizando alacritty, se debe colocar el nombre de la fuente en su
+apartado en el archivo ~/.config/alacritty/alacritty.yml
+Cabe mensionar que el nombre se puede obtener abriendo la fuente con el gestor
+de fuentes de ubuntu.
+
+Ya que se tiene la fuente pached, se puede proseguir con los pasos de arch.
+Si quieres personalizar más ranger, se puede ver el siguiente articulo:
+https://atareao.es/software/utilidades/administrador-de-archivos-para-el-terminal/
+
+
 ###################################################################
 #######################33Personalizando el grub####################
 ##################################################################
@@ -574,3 +611,54 @@ $sudo update-grub
 
 Y ya se reinicia el sistema y se puede seleccionar en opciones
 avanzadas el kernel zen
+
+
+
+
+
+
+*********************************************************************
+*********************************************************************
+**********Alacritty en ubuntu****************************************
+*********************************************************************
+*********************************************************************
+
+Alacritty esta construido en rust, por lo que se puede instalar con cargo
+Primero tenemos que instalar cargo:
+Cargo se puede instalar desde los repositorios oficiales:
+~$ sudo apt install cargo
+Lo cual instala rust y todo, después se deben instalar dependencias
+Como se indica en su github:
+https://github.com/alacritty/alacritty/blob/master/INSTALL.md
+Y después se puede instalar alacritty desde cargo
+~$cargo install alacritty
+
+
+
+
+**************************************************************************
+**************************************************************************
+***********Distribución de teclado persistente****************************
+**************************************************************************
+**************************************************************************
+
+Ubuntu utiliza systemd al igual que arch, por esta razon se pueden utilizar
+todas las formas de cambiar los keymap que estan en la documentación de arch
+https://wiki.archlinux.org/title/Xorg/Keyboard_configuration
+Pero la más efectiva hace esta configuración directamente desde la configuración
+de xorg en el archivo:
+/etc/X11/xorg.conf.d/00-keyboard.conf
+
+Por ejemplo para la distribución latinoamericana, con una computadora dell inspiron
+
+
+Section "InputClass"
+	Identifier "system-keyboard"
+	MatchIsKeyboard "on"
+	Option "XkbLayout" "latam"
+	Option "XkbModel" "inspiron"
+	Option "XkbVariant" "deadtilde"
+EndSection
+
+
+El deadtilde sirve para que el teclado espere cada vez que se pone un acento
